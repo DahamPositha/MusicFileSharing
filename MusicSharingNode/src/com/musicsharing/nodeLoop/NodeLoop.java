@@ -48,6 +48,7 @@ public class NodeLoop extends Thread {
 		NodeLoop nodeLoop = new NodeLoop();
 		Thread listeningThread=new NodeLoop();
 		listeningThread.start();
+		nodeLoop.initiateFiles();
 		nodeLoop.registerAndJoin();
 	}
 }

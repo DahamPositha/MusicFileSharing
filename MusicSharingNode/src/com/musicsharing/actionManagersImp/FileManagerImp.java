@@ -31,6 +31,12 @@ public class FileManagerImp implements FileManager {
 	@Override
 	public void initiateFilesOfTheNode() {
 		FileRepoSingleton.getFileRepoSingleton().setMusicFiles(selectRandomfiles());
+		System.out.print("Files are set: ");
+		Iterator<String> it=FileRepoSingleton.getFileRepoSingleton().getMusicFiles().iterator();
+		while(it.hasNext()){
+			
+			System.out.print(it.next()+",");
+		}
 		
 	}
 	

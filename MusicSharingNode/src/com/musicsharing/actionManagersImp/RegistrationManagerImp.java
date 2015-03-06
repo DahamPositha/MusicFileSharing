@@ -11,17 +11,17 @@ import com.musicsharing.utilsImp.SocketClientImp;
 import com.musicsharing.utilsImp.UDPClient;
 
 public class RegistrationManagerImp implements RegistrationManager {
-	SocketClient client;
+	SocketClient clientSocket;
 
 	@Override
 	public String registerRequestAndGetResponse(String server, int portNumber,
 			String myServer, int myPort, String myUserName) {
-		client = new SocketClientImp();
+		clientSocket = new SocketClientImp();
 		
 		String message = createRegMessage(myServer, myPort, myUserName);
 		
 			try {
-				return client.callAndGotResponse(server, portNumber, message);
+				return clientSocket.callAndGotResponse(server, portNumber, message);
 			} catch (SocketException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -50,7 +50,7 @@ public class RegistrationManagerImp implements RegistrationManager {
 
 		fullMessage += String.format("%.4f", d).substring(2);
 		fullMessage += messageSuffix;
-		System.out.println("Registration Message: "+fullMessage);
+		System.out.println("BS Registration Message: "+fullMessage);
 		return fullMessage;
 
 	}

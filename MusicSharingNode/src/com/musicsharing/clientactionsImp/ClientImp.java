@@ -36,7 +36,7 @@ public class ClientImp implements Client {
 		registerManager = new RegistrationManagerImp();
 
 		myUserName = Constant.myUserName;
-		System.out.println(myUserName);
+		
 		String outputString = registerManager.registerRequestAndGetResponse(
 				server, portNumber, myServer, myPort, myUserName);
 		String[] splited = outputString.split("\\s+");
@@ -47,21 +47,21 @@ public class ClientImp implements Client {
 		System.out.println("Here are the table records");
 		while (it.hasNext()) {
 			TableRecord next = it.next();
-			System.out.print(next.getServer() + ",");
-			System.out.print(next.getPort() + ",");
-			System.out.print(next.getUserName() + ",");
+			System.out.print(next.getServer() + " ");
+			System.out.print(next.getPort() + " ");
+			System.out.print(next.getUserName() + " ");
 			System.out.println();
 		}
 
 		if (tr.size() > 0) {
 			List<TableRecord> randomRecords = chooseTwoRandomTableRecords(tr);
-			System.out.println("Random table records");
+			System.out.println("Two or One Random table records");
 			Iterator<TableRecord> it2 = randomRecords.iterator();
 			while (it2.hasNext()) {
 				TableRecord next = it2.next();
-				System.out.print(next.getServer() + ",");
-				System.out.print(next.getPort() + ",");
-				System.out.print(next.getUserName() + ",");
+				System.out.print(next.getServer() + " ");
+				System.out.print(next.getPort() + " ");
+				System.out.print(next.getUserName() + " ");
 				System.out.println();
 				new RoutingTableManagerImp().storeRoutingData(next.getServer(),
 						next.getPort(), next.getUserName());
@@ -85,10 +85,14 @@ public class ClientImp implements Client {
 			new WithinOverlayCommunicationManagerImp().flooodTheMessage(
 					splited[2], Integer.parseInt(splited[3]), splited[4],
 					Integer.parseInt(splited[5]));
+			
+			
 		} else if (splited[1].equals("JOIN")) {
 			new RoutingTableManagerImp().storeRoutingData(splited[2],
 					Integer.parseInt(splited[3]), "");
 
+			
+			
 		} else if (splited[1].equals("LEAVE")) {
 			new WithinOverlayCommunicationManagerImp().responseTheLeaving(
 					splited[2], Integer.parseInt(splited[3]));
@@ -103,9 +107,9 @@ public class ClientImp implements Client {
 		List<TableRecord> recordList = new ArrayList<TableRecord>();
 
 		String[] splited = message.split("\\s+");
-		for (int i = 0; i < splited.length; i++) {
-			System.out.println(splited[i]);
-		}
+//		for (int i = 0; i < splited.length; i++) {
+//			System.out.println(splited[i]);
+//		}
 
 		int numberOfPeers = 0;
 		if (splited.length > 3) {

@@ -53,7 +53,7 @@ public class SocketClientImp implements SocketClient {
 
 			output.close();
 			in.close();
-			// client.close();
+			
 			return result;
 		} catch (IOException e) {
 			e.printStackTrace();

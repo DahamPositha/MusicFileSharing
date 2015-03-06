@@ -32,7 +32,7 @@ public class WithinOverlayCommunicationManagerImp implements
 
 		fullMessage += String.format("%.4f", d).substring(2);
 		fullMessage += messageSuffix;
-		System.out.println(fullMessage);
+		System.out.println("Inform two nodes abount joining: "+fullMessage);
 		SocketClient socketClient=new UDPClient();
 		for (Integer key : RoutingTableSingleton.getRoutingTable().getRecords()
 				.keySet()) {
@@ -42,6 +42,10 @@ public class WithinOverlayCommunicationManagerImp implements
 								.get(key).getServer(),
 						RoutingTableSingleton.getRoutingTable().getRecords()
 								.get(key).getPort(), fullMessage);
+				System.out.println("inform to: "+RoutingTableSingleton.getRoutingTable().getRecords()
+								.get(key).getServer()+" "+
+						RoutingTableSingleton.getRoutingTable().getRecords()
+								.get(key).getPort());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

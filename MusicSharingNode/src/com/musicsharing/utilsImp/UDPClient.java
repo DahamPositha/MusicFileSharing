@@ -18,7 +18,7 @@ public class UDPClient implements SocketClient {
 			String message) throws IOException {
 		
 		 DatagramSocket ds = new DatagramSocket();  
-		    String str = "Welcome java";  
+		    
 		    InetAddress ip = InetAddress.getByName("localhost");  
 		     
 		    DatagramPacket dp = new DatagramPacket(message.getBytes(), message.length(), ip, 2000);  
