@@ -138,21 +138,21 @@ public class ClientImp implements Client {
 		List<TableRecord> inputRecords = records;
 		List<TableRecord> outputRecords = new ArrayList<TableRecord>();
 		int elementCount = records.size();
-		System.out.println(elementCount);
+		
 		int randomRecord = 0;
 		Random rand = new Random();
 		if (elementCount == 1) {
 
 			outputRecords.add(inputRecords.get(0));
-			System.out.println("Rand 1: " + randomRecord);
+			
 			return outputRecords;
 		} else {
 			randomRecord = (int) Math.abs(rand.nextInt(elementCount - 1));
 			outputRecords.add(inputRecords.get(randomRecord));
-			System.out.println("Rand 1: " + randomRecord);
+			
 			randomRecord = (int) Math.abs(rand.nextInt(elementCount - 1));
 			outputRecords.add(inputRecords.get(randomRecord));
-			System.out.println("Rand 1: " + randomRecord);
+			
 			return outputRecords;
 		}
 

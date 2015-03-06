@@ -16,9 +16,16 @@ public class UDPServer implements SocketServer {
 	public String listenAndGotResponse(String server, int portNumber,
 			String message) throws SocketException, UnknownHostException,
 			IOException {
-		System.out.println("UDPServer is listening");
+		
 		InetAddress host=InetAddress.getByName(server);
-		DatagramSocket ds = new DatagramSocket(portNumber, host); 
+		System.out.println("UDPServer is listening to "+host+" "+portNumber);
+		DatagramSocket ds = null;
+		try{
+		ds = new DatagramSocket(portNumber, host); 
+		}catch(Exception e){
+			System.out.println("Can not connect due to problem at "+host+" "+portNumber);
+			return null;
+		}
 	    byte[] buf = new byte[1024];  
 	    DatagramPacket dp = new DatagramPacket(buf, 1024);  
 	    ds.receive(dp); 

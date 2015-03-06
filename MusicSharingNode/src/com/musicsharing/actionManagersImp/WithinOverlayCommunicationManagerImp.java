@@ -32,7 +32,7 @@ public class WithinOverlayCommunicationManagerImp implements
 
 		fullMessage += String.format("%.4f", d).substring(2);
 		fullMessage += messageSuffix;
-		System.out.println("Inform two nodes abount joining: "+fullMessage);
+		System.out.println("Inform two nodes about joining: "+fullMessage);
 		SocketClient socketClient=new UDPClient();
 		for (Integer key : RoutingTableSingleton.getRoutingTable().getRecords()
 				.keySet()) {
